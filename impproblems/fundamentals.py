@@ -1,26 +1,26 @@
-# def string_reverse(string):
-#     return string[::-1]
-# # string_reverse()
-# def even_sum(lis):
-#     sum = 0
-#     for i in lis:
-#         if i%2==0:
-#             sum +=i
-#     return sum
-# print(even_sum([1,2,3,4,5,6]))
-# # first unique character in a string
-# def unique_character(s):
-#     unique_char = {}
-#     unique_char_list = []
-#     for i in s:
-#         if i in unique_char:
-#             unique_char[i]+=1
-#         else:
-#             unique_char[i]=1
-#     for i in unique_char:
-#         if unique_char[i] ==1:
-#             unique_char_list.append(i)
-#     return unique_char_list[0]
+def string_reverse(string):
+    return string[::-1]
+# string_reverse()
+def even_sum(lis):
+    sum = 0
+    for i in lis:
+        if i%2==0:
+            sum +=i
+    return sum
+print(even_sum([1,2,3,4,5,6]))
+# first unique character in a string
+def unique_character(s):
+    unique_char = {}
+    unique_char_list = []
+    for i in s:
+        if i in unique_char:
+            unique_char[i]+=1
+        else:
+            unique_char[i]=1
+    for i in unique_char:
+        if unique_char[i] ==1:
+            unique_char_list.append(i)
+    return unique_char_list[0]
 
 
 
