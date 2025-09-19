@@ -77,3 +77,92 @@ def compress_string_with_count(s):
         new_string += f'{i}{str(j)}'
     return new_string
 print(compress_string_with_count('maaddiii'))
+
+"""
+Topics:
+RBAC, Fastapi, SSO: keycloak working
+
+""" 
+
+# find the max char present in the string
+
+
+
+"""
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+print("Try programiz.pro")
+
+
+
+
+design a simple Library Management System in Python.
+ 
+The system should:
+ 
+Allow adding new books with book_id, title, and author.
+ 
+Allow users to borrow a book (if available).
+ 
+Allow users to return a book.
+ 
+Display all available books in the library.
+
+approach:
+
+Library -> books
+Users access books
+book -> book_id, title, author,boolean: false
+user will be assigned with that book
+list of books will be sent back for the visiblity
+
+
+
+
+class library():
+    def __init__(self,books):
+        self.books = books
+    def get_books_details(self):
+        return self.books
+    def add_new_book(self,new_book={}):
+        if ['book_id','book_name','Author','Available'] in new_book:
+            self.books.append(new_book)
+                
+    def borrow_book(self,id):
+        for i in self.books:
+            if i['id'] == id:
+                i['Available'] = False
+    def return_book(self,id):
+        for i in self.books:
+            if i['id'] == id:
+                i['Available'] = True
+class User:
+    def __init__(self,users):
+        self.user = users
+    def borrow_book(self):
+        
+    
+user_id, user_name, book_id,duration
+books = [{
+    'book_id':1,
+    'book_name':'Book1',
+    'Author': 'Author1',
+    'Avaiable': True
+},{
+    'book_id':2,
+    'book_name':'Book2',
+    'Author': 'Author2',
+        'Avaiable': True
+},
+]
+l = library(books)
+user = [
+    {
+        
+    },
+    ]
+u = User()
+
+
+
+"""

@@ -63,3 +63,24 @@ def recursive_binary_search(target,lis,low,high):
     return -1
 lis  = [1,2,3,4,5,6]
 print(recursive_binary_search(4,lis,0,len(lis)))
+
+def number_first_last_occurance(target,lis):
+    """
+    approach:
+
+    """
+
+    first = 0
+    last = 0
+    
+
+# unittesting
+# case1: where number starts from first and  anywhere inbetween
+# [1,2,3,4,1,4,1,1,3,1,4,3,2,5], 1
+target = 1
+lis = [1,2,3,4,1,4,1,1,3,1,4,3,2,5]
+print(number_first_last_occurance(target,lis))
+# case2: only one number
+target = 1
+lis = [1,2,5]
+print(number_first_last_occurance(target,lis))

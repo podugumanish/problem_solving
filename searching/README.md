@@ -108,6 +108,10 @@ usecase: recursively binary search
     example:[1,2,3,4,5,6]
 
 Find the first and last occurrence of a number in a sorted list.
+usecase:
+target = 10
+[1,2,3,4,1,4,1,1,3,1,4,3,2,5]
+approach:
 
 Find the index of the smallest element greater than or equal to a target (lower bound search).
 
