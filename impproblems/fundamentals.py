@@ -166,3 +166,116 @@ u = User()
 
 
 """
+class Book:
+    """Represents a single type of book with multiple copies."""
+
+    def __init__(self, book_id: int, title: str, author: str, copies: int = 1):
+        """
+        Initialize a new Book instance.
+
+        Args:
+            book_id (int): Identifier for the book type.
+            title (str): Title of the book.
+            author (str): Author of the book.
+            copies (int): Number of copies available.
+        """
+        self.book_id = book_id
+        self.title = title
+        self.author = author
+        self.total_copies = copies  # Total copies of this book
+        self.borrowed_copies = 0    # How many copies are currently borrowed
+
+    @property
+    def available_copies(self) -> int:
+        """Return how many copies are available for borrowing."""
+        return self.total_copies - self.borrowed_copies
+
+    def __str__(self):
+        """Return string representation including available copies."""
+        return f"[{self.book_id}] {self.title} by {self.author} - Available: {self.available_copies}/{self.total_copies}"
+
+
+class Library:
+    """A library that can hold multiple copies of the same book."""
+
+    def __init__(self):
+        """Initialize an empty library."""
+        self.books = []
+
+    def add_book(self, book_id: int, title: str, author: str, copies: int = 1):
+        """
+        Add new copies of a book to the library.
+
+        Args:
+            book_id (int): Identifier for the book type.
+            title (str): Title of the book.
+            author (str): Author of the book.
+            copies (int): Number of copies to add.
+        """
+        for book in self.books:
+            if book.book_id == book_id:
+                # If the book already exists, just increase its total copies
+                book.total_copies += copies
+                print(f"✅ Added {copies} more copies of '{book.title}'. Total: {book.total_copies}")
+                return
+
+        # Otherwise, add as a new book entry
+        self.books.append(Book(book_id, title, author, copies))
+        print(f"✅ Book '{title}' added with {copies} copies.")
+
+    def display_books(self):
+        """Display all books with available copies."""
+        if not self.books:
+            print("⚠️ No books in the library.")
+            return
+
+        print("\n📚 Library Collection:")
+        for book in self.books:
+            print(f"  {book}")
+
+    def borrow_book(self, book_id: int):
+        """Borrow a copy of a book if available."""
+        for book in self.books:
+            if book.book_id == book_id:
+                if book.available_copies > 0:
+                    book.borrowed_copies += 1
+                    print(f"✅ You borrowed '{book.title}'. Remaining copies: {book.available_copies}")
+                else:
+                    print(f"⚠️ No copies of '{book.title}' are currently available.")
+                return
+        print("❌ Book not found!")
+
+    def return_book(self, book_id: int):
+        """Return a borrowed copy of a book."""
+        for book in self.books:
+            if book.book_id == book_id:
+                if book.borrowed_copies > 0:
+                    book.borrowed_copies -= 1
+                    print(f"✅ You returned '{book.title}'. Remaining copies: {book.available_copies}")
+                else:
+                    print(f"⚠️ No borrowed copies of '{book.title}' to return.")
+                return
+        print("❌ Book not found!")
+
+
+# Example usage
+if __name__ == "__main__":
+    library = Library()
+
+    # Add books (multiple copies allowed)
+    library.add_book(1, "1984", "George Orwell", copies=3)
+    library.add_book(2, "The Great Gatsby", "F. Scott Fitzgerald", copies=2)
+
+    library.display_books()
+
+    # Borrow multiple copies
+    library.borrow_book(1)
+    library.borrow_book(1)
+    library.borrow_book(1)
+    library.borrow_book(1)  # Should warn that no copies left
+
+    library.display_books()
+
+    # Return a book
+    library.return_book(1)
+    library.display_books()

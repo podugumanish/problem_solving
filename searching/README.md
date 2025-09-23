@@ -108,12 +108,74 @@ usecase: recursively binary search
     example:[1,2,3,4,5,6]
 
 Find the first and last occurrence of a number in a sorted list.
-usecase:
-target = 10
-[1,2,3,4,1,4,1,1,3,1,4,3,2,5]
-approach:
+usecase: searching first and last element using sorted list
+    approach1:used for unsorted
+    declare variables and assign default values as indexes f=0, l = list length - 1 
+    loop the list for first index and assign the index of its first finding of target and break
+    loop the list for last index and assign the index of its first finding of target and break
+    return f and l indexes back
+    approach2:Single-pass approach used for unsorted
+    --------------------
+    1. Initialize first and last indices as -1 (not found).
+    2. Loop through the list once:
+        - If the current element matches the target:
+            - If first is -1, assign it as the current index (first occurrence).
+            - Always assign current index to last (last occurrence so far).
+    3. Return first and last indices.
+    
+    Example:
+    >>> number_first_last_occurance(3, [1, 3, 4, 3, 5])
+    (1, 3)
+approach1: for a sorted list
+    """
+    Find the first and last occurrence of a number in a sorted list using binary search.
+
+    This works in O(log n) time because we use binary search twice:
+      - Once to find the first occurrence.
+      - Once to find the last occurrence.
+
+    Args:
+        target (int): The number to search for.
+        lis (list): A sorted list of numbers.
+
+    Returns:
+        tuple: (first_index, last_index) or (-1, -1) if not found.
+
+    Example:
+    --------
+    >>> first_last_occurrence_sorted(3, [1, 3, 3, 3, 5, 7])
+    (1, 3)
+    """
+
+The above docstring follows the google style doc format:
+one-liner summary
+brief desciption: like its complexity and purpose of use
+input args
+results
+example test case.
 
 Find the index of the smallest element greater than or equal to a target (lower bound search).
+approach:
+    """
+    Find the index of the smallest element greater than or equal to target (lower bound).
+
+    This uses binary search in O(log n) time.
+    If all elements are smaller than the target, returns -1.
+
+    Args:
+        target (int): The value to search for.
+        lis (list): A sorted list of numbers.
+
+    Returns:
+        int: The index of the smallest element >= target, or -1 if none exists.
+
+    Example:
+        >>> smallest_element_index(4, [1, 3, 5, 7])
+        2   # because lis[2] = 5, which is the smallest >= 4
+        >>> smallest_element_index(8, [1, 3, 5, 7])
+        -1  # no element >= 8
+    """
+
 
 Find the index of the largest element less than or equal to a target (upper bound search).
 
