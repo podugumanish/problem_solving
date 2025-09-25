@@ -259,23 +259,116 @@ class Library:
 
 
 # Example usage
-if __name__ == "__main__":
-    library = Library()
+# if __name__ == "__main__":
+#     library = Library()
 
-    # Add books (multiple copies allowed)
-    library.add_book(1, "1984", "George Orwell", copies=3)
-    library.add_book(2, "The Great Gatsby", "F. Scott Fitzgerald", copies=2)
+#     # Add books (multiple copies allowed)
+#     library.add_book(1, "1984", "George Orwell", copies=3)
+#     library.add_book(2, "The Great Gatsby", "F. Scott Fitzgerald", copies=2)
 
-    library.display_books()
+#     library.display_books()
 
-    # Borrow multiple copies
-    library.borrow_book(1)
-    library.borrow_book(1)
-    library.borrow_book(1)
-    library.borrow_book(1)  # Should warn that no copies left
+#     # Borrow multiple copies
+#     library.borrow_book(1)
+#     library.borrow_book(1)
+#     library.borrow_book(1)
+#     library.borrow_book(1)  # Should warn that no copies left
 
-    library.display_books()
+#     library.display_books()
 
-    # Return a book
-    library.return_book(1)
-    library.display_books()
+#     # Return a book
+#     library.return_book(1)
+#     library.display_books()
+
+
+# # Online Python compiler (interpreter) to run Python online.
+# # Write Python 3 code in this online editor and run it.
+# print("Try programiz.pro")
+# # reverse string
+# string = "abcdef"
+# # print(string[::-1])
+# rev_string= ''
+# len_s = len(string)
+# print('checking',len_s)
+# for i in range(len_s):
+#     rev_string += string[(len_s-1)-i]
+# print(rev_string)
+
+# list of few indexes
+# lis = ['eat','ate','ten','net','bet']
+# # divide the list as per anagram
+# lis2 = []
+# dic = {}
+# for i in lis:
+#     # key check
+    
+#     for j in dic:
+#         for elem in i:
+#             for
+        
+        # if len(i)==len(j):
+            
+# multiple duplicate value indexes    # 
+lis = [1,1,2,3,1,5,6,6,7]
+lis2 = set(lis)
+dic = {}
+for index,val in enumerate(lis):
+    if val in lis2:
+        if val not in dic:
+            dic[val] =[index]
+        else:
+            dic[val].append(index)
+print(dic)
+
+
+lis = ['eat', 'ate', 'ten', 'net', 'bet']
+
+# Dictionary to group anagrams
+anagram_dict = {}
+
+for word in lis:
+    # Sort the word to create the key
+    key = ''.join(sorted(word))
+    anagram_dict.setdefault(key, []).append(word)
+
+# Get the grouped anagrams as a list of lists
+lis2 = list(anagram_dict.values())
+
+print(lis2)
+
+    
+            
+
+import functools
+import logging
+
+# Configure logging (optional)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+def exception_handler(default_return=None, raise_exception=False):
+    """
+    Decorator to handle exceptions in a generic way.
+
+    :param default_return: Value to return if exception occurs (default: None)
+    :param raise_exception: If True, re-raise the exception after handling it
+    """
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                logging.error(f"Error in {func.__name__}: {e}", exc_info=True)
+                if raise_exception:
+                    raise
+                return default_return
+        return wrapper
+    return decorator
+@exception_handler(default_return="Something went wrong!")
+def divide(a, b):
+    return a / b
+
+print(divide(10, 2))   # ✅ Output: 5.0
+print(divide(10, 0))   # ✅ Logs error, returns "Something went wrong!"
+
+    
