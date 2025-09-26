@@ -197,3 +197,12 @@ Yes  No
  ▼   ▼
 Proceed to   @jwt.needs_fresh_token_loader
 Endpoint     (Fresh token required)
+
+
+
+
+1. Async and sync usecases and gunicorn and uvironr usecases when thery are used
+2. Why Fastapi or why flask
+3. Module: pydentic
+4. AWS services: indetails of the things mentioned.
+5. LLM or Agentic AI usecases to do as per project.
